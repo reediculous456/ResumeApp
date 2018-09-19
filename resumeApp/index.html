@@ -66,9 +66,15 @@
             <h2 class="text-white mb-5">Upload your resume here!</h2>
 
             <form>
-              <input type="first-name" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputFName" placeholder="Enter first name" width="20%">
-              <input type="last-name" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputLName" placeholder="Enter last name" width="20%">
+              <input type="firstname" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputFName" placeholder="Enter first name" width="20%">
+              <input type="lastname" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputLName" placeholder="Enter last name" width="20%">
               <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address" width="20%">
+              <select name="position">
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="fiat">Fiat</option>
+                  <option value="audi">Audi</option>
+                </select>
               <button class="btn btn-primary mx-auto">Attach File</button>
               <button type="submit" class="btn btn-primary mx-auto">Submit</button>
             </form>
