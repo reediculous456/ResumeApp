@@ -51,5 +51,10 @@
     "url": "https://git.uc.edu/reedws/resumeApp.git"
   },
   "author": "Wesley Reed",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "angular-animate": "^1.7.4",
+    "angular-touch": "^1.7.4",
+    "angular-ui-bootstrap": "^2.5.6"
+  }
 }
