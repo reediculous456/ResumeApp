@@ -39,5 +39,17 @@
   },
   "scripts": {
     "test": "karma start test/karma.conf.js"
-  }
+  },
+  "description": "This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular) version 0.16.0.",
+  "version": "1.0.0",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.uc.edu/reedws/resumeApp.git"
+  },
+  "author": "Wesley Reed",
+  "license": "ISC"
 }
