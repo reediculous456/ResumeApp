@@ -1,6 +1,40 @@
 (function($) {
   "use strict"; // Start of use strict
 
+/**
+ * @ngdoc overview
+ * @name resumeappApp
+ * @description
+ * # resumeappApp
+ *
+ * Main module of the application.
+ */
+angular
+  .module('resumeappApp', [
+    'ngAnimate',
+    'ngCookies',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch'
+  ])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'index.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });
+
   // Smooth scrolling using jQuery easing
   $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
