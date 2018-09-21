@@ -2,7 +2,6 @@
 <html lang="en">
 
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -23,7 +22,7 @@
 
   </head>
 
-  <body id="page-top">
+  <body ng-app="resumeappApp" ng-controller="MainController" id="page-top">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -36,54 +35,17 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/#signup">Upload</a>
+              <a class="nav-link js-scroll-trigger" href="/upload">Upload</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#/login">Admin Login</a>
+              <a class="nav-link js-scroll-trigger" ng-class="{ active: header.isActive('/login')}" href="#/login">Admin Login</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!-- Header -->
-    <header class="masthead">
-      <div class="container d-flex h-100 align-items-center">
-        <div class="mx-auto text-center">
-          <h1 class="mx-auto my-0 text-uppercase">Resume App</h1>
-          <h2 class="text-white-50 mx-auto mt-2 mb-5">A tool to upload your resume to be reviewed by prospective employers</h2>
-          <a href="#signup" class="btn btn-primary js-scroll-trigger">Get Started</a>
-        </div>
-      </div>
-    </header>
-
-    <!-- Signup Section -->
-    <section id="signup" class="signup-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-10 col-lg-8 mx-auto text-center">
-
-            <h2 class="text-white mb-5">Upload your resume here!</h2>
-
-            <form>
-              <input type="firstname" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputFName" placeholder="Enter first name" width="20%">
-              <input type="lastname" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputLName" placeholder="Enter last name" width="20%">
-              <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address" width="20%">
-              <select name="position">
-                  <option selected disabled>Choose a Position</option>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="fiat">Fiat</option>
-                  <option value="audi">Audi</option>
-                </select>
-              <button class="btn btn-primary mx-auto">Attach File</button>
-              <button type="submit" class="btn btn-primary mx-auto">Submit</button>
-            </form>
-
-          </div>
-        </div>
-      </div>
-    </section>
+    <div ng-view=""></div>
 
     <!-- Footer -->
     <footer class="bg-black small text-center text-white-50">
@@ -100,9 +62,29 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="scripts/controllers//grayscale.min.js"></script>
-    <script src="sripts/app.js"></script>
+    <script src="scripts/controllers/grayscale.min.js"></script>
+
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/upload.js"></script>
+    <!-- endbuild -->
 
   </body>
 

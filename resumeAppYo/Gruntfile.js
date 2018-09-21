@@ -25,6 +25,8 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  var rewrite = require( "connect-modrewrite" );
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -68,12 +70,21 @@ module.exports = function (grunt) {
     },
 
     // The actual grunt server settings
-    connect: {
-      options: {
-        port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
-        livereload: 35729
+    connect: {  
+      options: {  
+          middleware: function ( connect, options, middlewares ) {
+              var rules = [
+                  "!\\.html|\\.js|\\.css|\\.svg|\\.jp(e?)g|\\.png|\\.gif$ /index.html"
+              ];
+              middlewares.unshift( rewrite( rules ) );
+              return middlewares;
+          }
+      },
+      server: {
+          options: {
+              port: 9000,
+              base: "path/to/base"
+          }
       },
       livereload: {
         options: {
@@ -97,16 +108,24 @@ module.exports = function (grunt) {
       test: {
         options: {
           port: 9001,
-          middleware: function (connect) {
-            return [
-              connect.static('.tmp'),
-              connect.static('test'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              ),
-              connect.static(appConfig.app)
-            ];
+            middleware: function (connect, options) {
+              var middlewares = [];
+              var directory = options.directory || options.base[options.base.length - 1];
+              if (!Array.isArray(options.base)) {
+                  options.base = [options.base];
+              }
+              options.base.forEach(function(base) {
+                  // Serve static files.
+                  middlewares.push(connect.static(base));
+              });
+
+              // Setup the proxy
+              middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
+
+              // Make directory browse-able.
+              middlewares.push(connect.directory(directory));
+
+              return middlewares;
           }
         }
       },

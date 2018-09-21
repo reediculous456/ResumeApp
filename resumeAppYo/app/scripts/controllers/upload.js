@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name resumeappApp.controller:LoginCtrl
+ * @name resumeappApp.controller:UploadCtrl
  * @description
- * # LoginCtrl
+ * # UploadCtrl
  * Controller of the resumeappApp
  */
 angular.module('resumeappApp')
-  .controller('LoginCtrl', function () {
+  .controller('UploadCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

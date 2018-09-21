@@ -20,7 +20,7 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'index.html',
+        templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
@@ -28,6 +28,11 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
         controllerAs: 'login'
+      })
+      .when('/upload', {
+        templateUrl: 'views/upload.html',
+        controller: 'UploadCtrl',
+        controllerAs: 'upload'
       })
       .otherwise({
         redirectTo: '/'
