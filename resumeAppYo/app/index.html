@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<base href="/">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,7 +27,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/#page-top">Resume App</a>
+        <a class="navbar-brand js-scroll-trigger" href="/">Resume App</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
@@ -38,14 +38,14 @@
               <a class="nav-link js-scroll-trigger" href="/upload">Upload</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" ng-class="{ active: header.isActive('/login')}" href="#/login">Admin Login</a>
+              <a class="nav-link js-scroll-trigger" href="/login">Admin Login</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <div ng-view=""></div>
+    <div ng-view></div>
 
     <!-- Footer -->
     <footer class="bg-black small text-center text-white-50">
@@ -63,6 +63,7 @@
 
     <!-- Custom scripts for this template -->
     <script src="scripts/controllers/grayscale.min.js"></script>
+    <script src="scripts/nav.js"></script>
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -85,7 +86,13 @@
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/upload.js"></script>
     <!-- endbuild -->
-
+<!---
+    <pre>$location.path() = {{$location.path()}}</pre>
+    <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
+    <pre>$route.current.params = {{$route.current.params}}</pre>
+    <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+    <pre>$routeParams = {{$routeParams}}</pre>
+--->
   </body>
 
 </html>

@@ -8,17 +8,15 @@
  * Controller of the resumeappApp
  */
 angular.module('resumeappApp')
-  .controller('MainCtrl', [ `$scope`, `$route`,  function ($scope, $route) {
+  .controller('MainCtrl', function($scope, $routeParams) {
 
     $scope.title = `ResumeApp`;
+    $scope.name = 'Main';
+    $scope.params = $routeParams;
 
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  }]).controller('MainController', function($scope, $route, $routeParams, $location) {
-    $scope.$route = $route;
-    $scope.$location = $location;
-    $scope.$routeParams = $routeParams;
-});
+  });

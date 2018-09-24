@@ -8,7 +8,11 @@
  * Controller of the resumeappApp
  */
 angular.module('resumeappApp')
-  .controller('UploadCtrl', function () {
+  .controller('UploadCtrl', function ($scope, $routeParams) {
+
+    $scope.name = 'UploadCtrl';
+    $scope.params = $routeParams;
+
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

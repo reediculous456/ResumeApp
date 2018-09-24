@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc function
- * @name resumeappApp.controller:LoginCtrl
+ * @name resumeappApp.controller:404Ctrl
  * @description
  * # LoginCtrl
  * Controller of the resumeappApp
  */
 angular.module('resumeappApp')
-  .controller('LoginCtrl', function ($scope, $routeParams) {
-    $scope.name = 'LoginCtrl';
+  .controller('404Ctrl', function ($scope, $routeParams) {
+    $scope.name = '404Ctrl';
     $scope.params = $routeParams;
 
     this.awesomeThings = [
