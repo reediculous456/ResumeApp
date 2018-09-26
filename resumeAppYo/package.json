@@ -38,6 +38,9 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "postinstall": "bower install",
+
+    "prestart": "npm install",
     "test": "karma start test/karma.conf.js"
   },
   "description": "This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular) version 0.16.0.",
@@ -56,10 +59,15 @@
     "angular-animate": "^1.7.4",
     "angular-touch": "^1.7.4",
     "angular-ui-bootstrap": "^2.5.6",
+    "async": "^2.6.1",
+    "bcrypt": "^3.0.1",
     "bookshelf": "^0.13.3",
     "bower": "^1.8.4",
     "connect-modrewrite": "^0.10.2",
-    "knex": "^0.15.2",
-    "pg": "^7.4.3"
+    "jshint": "^2.9.6",
+    "knex": "^0.14.6",
+    "node-gyp": "^3.8.0",
+    "pg": "^7.4.3",
+    "pgtools": "^0.3.0"
   }
 }

@@ -12,6 +12,14 @@ angular.module('resumeappApp')
 
     $scope.name = 'UploadCtrl';
     $scope.params = $routeParams;
+    var positions = ['temp1', 'temp2', 'spoigneoqignpqoin'];
+
+    var dropdown = document.getElementById("positionSelect");
+    if(dropdown) {
+      for (var i = 0; i < positions.length; i++) {
+        dropdown[dropdown.length] = new Option(positions[i], positions[i]);
+      }
+    }
 
     this.awesomeThings = [
       'HTML5 Boilerplate',

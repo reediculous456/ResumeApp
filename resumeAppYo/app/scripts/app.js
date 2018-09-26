@@ -21,6 +21,7 @@ angular
     $scope.$location = $location;
     $scope.$routeParams = $routeParams;
   }).config(function ($routeProvider, $locationProvider) {
+    $locationProvider.hashPrefix('!');
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
