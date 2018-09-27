@@ -39,7 +39,6 @@
   },
   "scripts": {
     "postinstall": "bower install",
-
     "prestart": "npm install",
     "test": "karma start test/karma.conf.js"
   },
@@ -64,6 +63,8 @@
     "bookshelf": "^0.13.3",
     "bower": "^1.8.4",
     "connect-modrewrite": "^0.10.2",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
     "jshint": "^2.9.6",
     "knex": "^0.14.6",
     "node-gyp": "^3.8.0",
