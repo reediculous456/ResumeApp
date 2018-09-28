@@ -3,12 +3,18 @@ var router = express.Router();
 var User = require('../models/user');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.route('/').get(function (req, res, next) {
   User
-      .fetchAll()
-      .then(function(users) {
-        res.json({ users });
-      });
+   // .where(`username`, `reedws@mail.us.edu`)
+    .fetchAll()
+    .then(function (collection) {
+      res.json(collection.toJSON());
+    })
+    .catch(function (err) {
+      res.status(500).json({error: true, data: {message: err.message}});
+    });
+
+  // res.json({'data':'data'});
 });
 
 module.exports = router;

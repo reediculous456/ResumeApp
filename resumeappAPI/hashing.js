@@ -1,5 +1,5 @@
 'use strict';
-var async = require('async');
+
 var bcrypt = require('bcrypt');
 const saltRounds = 10;
 const myPlaintextPassword = 'password';
