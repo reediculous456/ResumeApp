@@ -6,15 +6,17 @@
 
           <h2 class="text-white mb-5">Upload your resume here!</h2>
 
-          <form>
-            <input type="firstname" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputFName" placeholder="Enter first name" width="20%">
-            <input type="lastname" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputLName" placeholder="Enter last name" width="20%">
-            <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address" width="20%">
-            <select id="positionSelect">
+          <form action="http://localhost:3000/applicants" method="post" enctype="multipart/form-data" target="_blank">
+            <input type="firstname" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="inputFName" placeholder="Enter first name" width="20%">
+            <input type="lastname" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="inputLName" placeholder="Enter last name" width="20%">
+            <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="inputEmail" placeholder="Enter email address" width="20%">
+            <select name="positionSelect" id="positionSelect">
                 <option selected disabled>Choose a Position</option>
               </select>
-            <button class="btn btn-primary mx-auto">Attach File</button>
-            <button type="submit" class="btn btn-primary mx-auto">Submit</button>
+              <input type="file" name="resumeFile" style="color:white">
+            <!--<button class="btn btn-primary mx-auto">Attach File</button>-->
+            <br />
+            <input type="submit" value="Submit" class="btn btn-primary mx-auto">
           </form>
 
         </div>
