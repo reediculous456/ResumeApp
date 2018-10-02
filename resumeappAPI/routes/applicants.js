@@ -2,7 +2,16 @@ var express = require('express');
 var router = express.Router();
 var Applicant = require('../models/applicant');
 var multer  = require('multer')
-var upload = multer({ dest: 'uploads/' });
+const upload_path = 'uploads';
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, upload_path)
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + req.body.inputLName + req.body.inputFName + '-' + Date.now() + '.rtf')
+  }
+});
+var upload = multer({ storage: storage });
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
@@ -25,27 +34,20 @@ router.route('/').get(function (req, res, next) {
   sanitizeBody('inputLName').trim().escape(),
   sanitizeBody('imputEmail').trim().escape();
   const errors = validationResult(req);
-  /*new Applicant ({ 
+  new Applicant ({ 
     email: req.body.inputEmail,
     fName: req.body.inputFName,
-    lname: req.body.inputLName,
-    resumeFile: req.body.resumeFile,
+    lName: req.body.inputLName,
+    resumeFile: req.file.filename,
     position: req.body.positionSelect
   })
   .save(null, {method: 'insert'})
   .then(function (applicant) {
-    res.json({error: false, data: {email: applicant.get('id')}});
+    res.json({error: false, data: {id: applicant.get('id')}});
   })
   .catch(function (err) {
     res.status(500).json({error: true, data: {message: err.message}});
-  }); */
-  console.log('email: ' + req.body.inputEmail +
-    ' fName: ' + req.body.inputFName +
-    ' lname: ' + req.body.inputLName +
-    ' resumeFile: ' + req.body.resumeFile +
-    ' position: ' + req.body.positionSelect);
-    res.json({error: false});
-
+  }); 
 });
 
 module.exports = router;

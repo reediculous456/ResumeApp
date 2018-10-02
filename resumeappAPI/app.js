@@ -12,12 +12,25 @@ var applicantsRouter = require('./routes/applicants');
 var app = express();
 
 const upload_path = 'uploads';
-const upload = multer({ dest: upload_path });
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, upload_path)
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + req.body.inputLName + req.body.inputFName + Date.now() + '.rtf')
+  }
+});
+var upload = multer({ storage: storage });
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use('/users', usersRouter);
 app.use('/positions', positionsRouter);
