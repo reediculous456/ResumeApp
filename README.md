@@ -8,3 +8,5 @@ https://travishorn.com/what-did-i-learn-this-week-knex-js-bookshelf-js-95d3490e3
 http://expressjs.com/en/starter/generator.html
 
 http://expressjs.com/en/4x/api.html
+
+https://medium.com/@holtkam2/add-user-authentication-to-your-node-expressjs-application-using-bcrypt-81bb0f618ab3
