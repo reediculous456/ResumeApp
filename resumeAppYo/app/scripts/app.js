@@ -21,22 +21,22 @@ angular
     $scope.$location = $location;
     $scope.$routeParams = $routeParams;
   }).config(function ($routeProvider, $locationProvider) {
-    $locationProvider.hashPrefix('!');
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        controller: 'MainCtrl'
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl',
-        controllerAs: 'login'
+        controller: 'LoginCtrl'
       })
       .when('/upload', {
         templateUrl: 'views/upload.html',
-        controller: 'UploadCtrl',
-        controllerAs: 'upload'
+        controller: 'UploadCtrl'
+      })
+      .when('/applicants', {
+        templateUrl: 'views/applicants.html',
+        controller: 'ApplicantCtrl'
       })
       .otherwise({
         redirectTo: '/'

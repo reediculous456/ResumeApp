@@ -27,13 +27,13 @@ router.route('/').get(function (req, res, next) {
     });
 })
 .post(upload.single('resumeFile'), function (req, res) {
-  body('inputFName', 'Empty First Name').trim().isLength({ min: 1 }),
+  /*body('inputFName', 'Empty First Name').trim().isLength({ min: 1 }),
   body('inputLName', 'Empty Last Name').trim().isLength({ min: 1 }), 
   body('inputEmail', 'Invalid email').isLength({ min: 1 }),
   sanitizeBody('inputFName').trim().escape(),
   sanitizeBody('inputLName').trim().escape(),
   sanitizeBody('imputEmail').trim().escape();
-  const errors = validationResult(req);
+  const errors = validationResult(req);*/
   new Applicant ({ 
     email: req.body.inputEmail,
     fName: req.body.inputFName,
