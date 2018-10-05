@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.grid'
   ]).controller('MainController', function($scope, $route, $routeParams, $location) {
     $scope.$route = $route;
     $scope.$location = $location;
@@ -24,19 +25,23 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        controllerAs: '$mainCtrl'
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        controllerAs: '$loginCtrl'
       })
       .when('/upload', {
         templateUrl: 'views/upload.html',
-        controller: 'UploadCtrl'
+        controller: 'UploadCtrl',
+        controllerAs: '$uploadCtrl'
       })
       .when('/applicants', {
         templateUrl: 'views/applicants.html',
-        controller: 'ApplicantCtrl'
+        controller: 'ApplicantCtrl',
+        controllerAs: '$applicantCtrl'
       })
       .otherwise({
         redirectTo: '/'
