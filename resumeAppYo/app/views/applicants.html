@@ -1,6 +1,9 @@
-    <!-- Signup Section -->
-<section class="masthead">
-        <div>
-            <div ui-grid="gridOptions" class="myGrid"></div>
-          </div>
+<!-- Signup Section -->
+<section class="masthead gridContainer">
+  <div style="text-align: center">
+    <div ui-grid="gridOptions" ui-grid-selection class="myGrid">
+    </div>
+    <br />
+    <button class="btn btn-primary mx-auto" style="margin: auto" ng-click="rejectApplicant()">Reject Applicant</button>
+  </div>
 </section>

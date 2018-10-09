@@ -34,7 +34,7 @@ router.route('/')
 				}
 				bcrypt.compare(req.body.pWord, hash).then(function (result) {
 					if (result) {
-						res.json({ 'status': 'success' });
+						res.redirect('http://0.0.0.0:8000/#!applicants');
 					}
 					else {
 						res.json({ 'error': 'Password did not match ', 'username': req.body.uName });

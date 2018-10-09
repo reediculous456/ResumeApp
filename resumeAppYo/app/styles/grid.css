@@ -1,4 +1,10 @@
 .myGrid {
-    width: 60%;
+    width: 80rem;
     height: 90%;
+    margin:auto;
   }
+.gridContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

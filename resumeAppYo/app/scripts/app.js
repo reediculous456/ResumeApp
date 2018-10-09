@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.grid'
+    'ui.grid',
+    'ui.grid.selection'
   ]).controller('MainController', function($scope, $route, $routeParams, $location) {
     $scope.$route = $route;
     $scope.$location = $location;
@@ -42,6 +43,11 @@ angular
         templateUrl: 'views/applicants.html',
         controller: 'ApplicantCtrl',
         controllerAs: '$applicantCtrl'
+      })
+      .when('/thankyou', {
+        templateUrl: 'views/thankyou.html',
+        controller: 'ThankYouCtrl',
+        controllerAs: '$thankyouCtrl'
       })
       .otherwise({
         redirectTo: '/'
