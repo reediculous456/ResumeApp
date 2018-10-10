@@ -8,7 +8,7 @@
  * Controller of the resumeappApp
  */
 angular.module('resumeappApp')
-  .controller('ApplicantCtrl', function ($scope, $routeParams, $http) {
+  .controller('ApplicantCtrl', function ($scope, $routeParams, ApplicantsService) {
 
     $scope.name = 'ApplicantCtrl';
     $scope.params = $routeParams;
@@ -41,30 +41,22 @@ angular.module('resumeappApp')
       }
     };
 
-    $http({
-      method: 'GET',
-      url: 'http://localhost:3000/applicants'
-    }).then(function successCallback(response) {
-      var data = []
-      for (var i = 0; i < response.data.length; i++) {
-        if (!response.data[i].rejected) {
-          data.push(response.data[i]);
-        }
-      }
-      $scope.gridOptions.data = data;
-      console.log($scope.gridOptions.data);
-    });
+    $scope.gridOptions.data = ApplicantsService.getApplicants();
+    console.log($scope.gridOptions.data);
 
-    $scope.rejectApplicant = function () {
-      $http({
-        method: 'DELETE',
-        url: `http://localhost:3000/applicants/${$scope.selectedApplicantId}`,
-      }).then(function successCallback(response) {
+    $scope.rejectApplicant = async function () {
+      var result = await ApplicantsService.rejectApplicant($scope.selectedApplicantId);
+
+      if (result) {
         alert(`Rejected applicant #${$scope.selectedApplicantId}`);
         var index = $scope.gridOptions.data.indexOf($scope.selectedApplicant);
         $scope.gridOptions.data.splice(index, 1);
-      });
+      }
+      else {
+        alert('An error ocurred, please try again');
+      }
     }
+
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

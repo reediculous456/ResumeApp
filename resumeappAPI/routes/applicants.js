@@ -58,7 +58,6 @@ router.route('/:id')
     })
       .save(null, { method: 'update' })
       .then(function (applicant) {
-        //res.redirect('http://0.0.0.0:8000/#!applicants')
         res.status(200).json({ 'status': 'success' });
       })
       .catch(function (err) {

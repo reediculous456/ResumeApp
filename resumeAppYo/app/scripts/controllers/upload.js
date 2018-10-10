@@ -8,29 +8,21 @@
  * Controller of the resumeappApp
  */
 angular.module('resumeappApp')
-  .controller('UploadCtrl', function ($scope, $routeParams, $http) {
+  .controller('UploadCtrl', function ($scope, $routeParams, PositionsService) {
+    
+    var loadDropdownOptions = async function () {
+      var dropdown = document.getElementById("positionSelect");
+      var positions = await PositionsService.getPositions();
+      if (dropdown) {
+        for (var i = 0; i < positions.length; i++) {
+          dropdown[dropdown.length] = new Option(positions[i], positions[i]);
+        }
+      }
+    };
 
     $scope.name = 'UploadCtrl';
     $scope.params = $routeParams;
-    $http({
-      method: 'GET',
-      url: 'http://localhost:3000/positions'
-    }).then(function successCallback(response) {
-      // this callback will be called asynchronously
-      // when the response is available
-      var positions = response.data;
-      //console.log(positions);
-      var dropdown = document.getElementById("positionSelect");
-
-      if (dropdown) {
-        for (var i = 0; i < positions.length; i++) {
-          //console.log(positions[i]);
-          if (positions[i].availible) {
-            dropdown[dropdown.length] = new Option(positions[i].position, positions[i].position);
-          }
-        }
-      }
-    });
+    loadDropdownOptions();
 
     this.awesomeThings = [
       'HTML5 Boilerplate',
