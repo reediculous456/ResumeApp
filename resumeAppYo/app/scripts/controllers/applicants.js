@@ -19,7 +19,7 @@ angular.module('resumeappApp')
         { name: 'First Name', field: 'fName' },
         { name: 'Last Name', field: 'lName' },
         { name: 'position' },
-        { name: 'File', field: 'resumeFile', cellTooltip: '{{row.entity.resumeFile}}', cellTemplate : '<a ng-href="http://localhost:3000/applicants/download/{{row.entity.id}}">{{row.entity.resumeFile}}</a>'},
+        { name: 'File', field: 'resumeFile', cellTooltip: '{{row.entity.resumeFile}}', cellTemplate: '<a ng-href="http://localhost:3000/applicants/download/{{row.entity.id}}">{{row.entity.resumeFile}}</a>' },
         { name: 'id', visible: false }
       ],
       paginationPageSizes: [10, 25],
@@ -62,7 +62,7 @@ angular.module('resumeappApp')
       }).then(function successCallback(response) {
         alert(`Rejected applicant #${$scope.selectedApplicantId}`);
         var index = $scope.gridOptions.data.indexOf($scope.selectedApplicant);
-            $scope.gridOptions.data.splice(index, 1);
+        $scope.gridOptions.data.splice(index, 1);
       });
     }
     this.awesomeThings = [

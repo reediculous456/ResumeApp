@@ -8,7 +8,7 @@
  * Controller of the resumeappApp
  */
 angular.module('resumeappApp')
-  .controller('MainCtrl', function($scope, $routeParams) {
+  .controller('MainCtrl', function ($scope, $routeParams) {
 
     $scope.title = `ResumeApp`;
     $scope.name = 'Main';

@@ -10,7 +10,7 @@ router.route('/').get(function (req, res, next) {
       res.json(collection.toJSON());
     })
     .catch(function (err) {
-      res.status(500).json({error: true, data: {message: err.message}});
+      res.status(500).json({ error: true, data: { message: err.message } });
     });
 });
 

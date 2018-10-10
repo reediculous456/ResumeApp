@@ -18,7 +18,7 @@ angular
     'ngTouch',
     'ui.grid',
     'ui.grid.selection'
-  ]).controller('MainController', function($scope, $route, $routeParams, $location) {
+  ]).controller('MainController', function ($scope, $route, $routeParams, $location) {
     $scope.$route = $route;
     $scope.$location = $location;
     $scope.$routeParams = $routeParams;
@@ -52,5 +52,5 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-      $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
   });
