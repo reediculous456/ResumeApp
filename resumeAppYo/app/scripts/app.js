@@ -18,10 +18,19 @@ angular
     'ngTouch',
     'ui.grid',
     'ui.grid.selection'
-  ]).controller('MainController', function ($scope, $route, $routeParams, $location) {
+  ]).controller('MainController', function ($scope, $route, $routeParams, $location, SessionService) {
     $scope.$route = $route;
     $scope.$location = $location;
     $scope.$routeParams = $routeParams;
+    $scope.secureAccess = async function () {
+
+      if (SessionService.getUserAuthenticated()) {
+        $location.path('/applicants');
+      }
+      else {
+        $location.path('/login');
+      }
+    }
   }).config(function ($routeProvider, $locationProvider) {
 
     for (var path in routes) {
