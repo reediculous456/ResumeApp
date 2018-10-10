@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt');
-var User = require('../models/user');
+var UserService = require('../services/userService');
 
-const { body, validationResult } = require('express-validator/check');
-const { sanitizeBody } = require('express-validator/filter');
+//const { body, validationResult } = require('express-validator/check');
+//const { sanitizeBody } = require('express-validator/filter');
 
 /* GET users listing. */
 router.route('/')
@@ -15,34 +15,44 @@ router.route('/')
 		sanitizeBody('pWord').trim().escape();
 		const errors = validationResult(req);*/
 		//console.log('Starting');
-
-		User
-   /*.where('username', req.body.uName)
-   .fetchOne().then(function (found) {
-      users = found;
-      console.log(users.toJSON());
-  });*/.fetchAll()
-			.then(function (collection) {
-				var users = collection.toJSON();
-				var hash = "";
-				for (var i = 0; i < users.length; i++) {
-					if (users[i].username === req.body.uName) {
-						hash = users[i].password;
-						//onsole.log('name ' + users[i].username + ' pword ' + users[i].password);
-						break;
-					}
+		/*ar success = function (collection) {
+			var users = collection.toJSON();
+			var hash = "";
+			for (var i = 0; i < users.length; i++) {
+				if (users[i].username === req.body.uName) {
+					hash = users[i].password;
+					//onsole.log('name ' + users[i].username + ' pword ' + users[i].password);
+					break;
 				}
-				bcrypt.compare(req.body.pWord, hash).then(function (result) {
-					if (result) {
-						res.redirect('http://0.0.0.0:8000/#!applicants');
-					}
-					else {
-						res.json({ 'error': 'Password did not match ', 'username': req.body.uName });
-					}
-				});
-			}).catch(function (err) {
-				res.status(500).json({ error: true, data: { message: err.message } });
+			}
+			bcrypt.compare(req.body.pWord, hash).then(function (result) {
+				if (result) {
+					res.redirect('http://0.0.0.0:8000/#!applicants');
+				}
+				else {
+					res.json({ 'error': 'Password did not match ', 'username': req.body.uName });
+				}
 			});
+		};*/
+
+		var success = function (user) {
+			bcrypt.compare(req.body.pWord, user.attributes.password).then(function (result) {
+				if (result) {
+					res.redirect('http://0.0.0.0:8000/#!applicants');
+				}
+				else {
+					res.json({ 'error': 'Password did not match ', 'username': req.body.uName });
+				}
+			});
+		};
+
+		var error = function (err) {
+			res.status(500).json({ error: true, data: { message: err.message } });
+		}
+
+		//UserService.getAllUsers(success, error);
+		UserService.getUserByUsername(req.body.uName, success, error)
+
 	});
 
 module.exports = router;

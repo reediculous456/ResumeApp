@@ -1,17 +1,19 @@
 var express = require('express');
 var router = express.Router();
-var Position = require('../models/position');
+var PositionService = require('../services/positionService');
 
 /* GET users listing. */
 router.route('/').get(function (req, res, next) {
-  Position
-    .fetchAll()
-    .then(function (collection) {
-      res.json(collection.toJSON());
-    })
-    .catch(function (err) {
-      res.status(500).json({ error: true, data: { message: err.message } });
-    });
+
+  var success = function (collection) {
+    res.json(collection.toJSON());
+  };
+
+  var error = function (err) {
+    res.status(500).json({ error: true, data: { message: err.message } });
+  };
+
+  PositionService.getAllPositions(success, error);
 });
 
 module.exports = router;
