@@ -69,8 +69,8 @@ router.route('/download/:id')
   .get(function (req, res, next) {
 
     var success = function (applicant) {
-      //console.log(`/Users/admin/Desktop/git/resumeApp/resumeappAPI/uploads/${applicant.attributes.resumeFile}`);
-      res.status(200).download(`/Users/admin/Desktop/git/resumeApp/resumeappAPI/uploads/${applicant.attributes.resumeFile}`);
+      console.log(`${process.env.PWD}/uploads/${applicant.attributes.resumeFile}`);
+      res.status(200).download(`${process.env.PWD}/uploads/${applicant.attributes.resumeFile}`);
     };
 
     var error = function (err) {

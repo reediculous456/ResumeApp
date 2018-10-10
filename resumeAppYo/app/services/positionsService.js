@@ -13,6 +13,8 @@ angular.module('resumeappApp')
                         data.push(positions[i].position);
                     }
                 }
+            }, function errorCallback() {
+                data = undefined;
             });
             console.log(data);
             return data;
