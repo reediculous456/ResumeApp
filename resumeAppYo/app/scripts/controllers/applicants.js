@@ -8,7 +8,7 @@
  * Controller of the resumeappApp
  */
 angular.module('resumeappApp')
-  .controller('ApplicantCtrl', function ($scope, $routeParams, ApplicantsService) {
+  .controller('ApplicantCtrl', function ($scope, $routeParams, $location, ApplicantsService, SessionService) {
 
     $scope.name = 'ApplicantCtrl';
     $scope.params = $routeParams;
@@ -55,6 +55,12 @@ angular.module('resumeappApp')
       else {
         alert('An error ocurred, please try again');
       }
+    }
+
+
+    $scope.logout = function () {
+      SessionService.setUserAuthenticated(false);
+      $location.path('/');
     }
 
     this.awesomeThings = [
