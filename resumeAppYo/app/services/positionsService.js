@@ -16,7 +16,6 @@ angular.module('resumeappApp')
             }, function errorCallback() {
                 data = undefined;
             });
-            console.log(data);
             return data;
         }
     });

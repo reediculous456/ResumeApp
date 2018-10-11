@@ -10,9 +10,9 @@ angular.module('resumeappApp')
                     'Content-Type': 'application/json; charset=utf-8'
                 }
             })
-                .then(function successCallback(response) {
+                .then(function successCallback() {
                     success = true;
-                }, function errorCallback(response) {
+                }, function errorCallback() {
                     success = false;
                 });
             return success;

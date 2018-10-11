@@ -41,9 +41,6 @@ angular.module('resumeappApp')
       }
     };
 
-    $scope.gridOptions.data = ApplicantsService.getApplicants();
-    console.log($scope.gridOptions.data);
-
     $scope.rejectApplicant = async function () {
       var result = await ApplicantsService.rejectApplicant($scope.selectedApplicantId);
 
@@ -57,11 +54,22 @@ angular.module('resumeappApp')
       }
     }
 
-
     $scope.logout = function () {
       SessionService.setUserAuthenticated(false);
       $location.path('/');
     }
+
+    var init = async function () {
+      var applicants = await ApplicantsService.getApplicants();
+      if (applicants) {
+        $scope.gridOptions.data = applicants;
+      }
+      else {
+        alert('Failed to load applicants, please check connection to server');
+      }
+    }
+
+    init();
 
     this.awesomeThings = [
       'HTML5 Boilerplate',

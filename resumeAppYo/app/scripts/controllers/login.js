@@ -16,7 +16,7 @@ angular.module('resumeappApp')
       var form = document.getElementById("loginForm");
       var FD = new FormData(form);
 
-      var result = await LoginService.login(FD.get('uName'), FD.get('pWord'));
+      var result = LoginService.login(FD.get('uName'), FD.get('pWord'));
 
       if (result) {
         SessionService.setUserAuthenticated(true);

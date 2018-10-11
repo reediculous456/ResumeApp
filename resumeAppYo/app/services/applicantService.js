@@ -1,8 +1,8 @@
 angular.module('resumeappApp')
     .service('ApplicantsService', function ($http) {
-        this.getApplicants = function () {
+        this.getApplicants = async function () {
             var data = [];
-            $http({
+            await $http({
                 method: 'GET',
                 url: 'http://localhost:3000/applicants'
             }).then(function successCallback(response) {
@@ -11,6 +11,8 @@ angular.module('resumeappApp')
                         data.push(response.data[i]);
                     }
                 }
+            }, function errorCallback(){
+                data = undefined;
             });
             return data;
         }
