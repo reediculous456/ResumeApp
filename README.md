@@ -1,16 +1,21 @@
 # resumeApp
-   ## Installation
-   ### 1. Clone Repo
+## Installation
+### 1. Clone Repo
     git@git.uc.edu:reedws/resumeApp.git
-   ### 2. NPM Install
+### 2. NPM Install
     cd ./resumeAppYo 
     npm install
     cd ./resumeappAPI
     npm install
-   ### 3. Bower Install
+### 3. Bower Install
     cd ./resumeAppYo
     bower install
-   ### 4. Run
+### 4. Install Postgres SQL
+Install Postgres sql and restore database
+    resumeappdb
+using the file
+    resumeappdb.sqlc
+### 5. Run
     cd ./resumeAppYo
     grunt serve 
     cd ./resumeAppAPI
