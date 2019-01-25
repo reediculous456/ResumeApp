@@ -1,5 +1,4 @@
 # resumeApp
-   # resumeApp
    ## Installation
    ### 1. Clone Repo
     git@git.uc.edu:reedws/resumeApp.git
