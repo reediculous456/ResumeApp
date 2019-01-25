@@ -1,5 +1,21 @@
 # resumeApp
-    to run, Run command grunt serve from ./resumeAppYo and nodemon from ./resumeAppAPI
+    # resumeApp
+    ## Installation
+    ### 1. Clone Repo
+    git@git.uc.edu:reedws/resumeApp.git
+    ### 2. NPM Install
+    cd ./resumeAppYo 
+    npm install
+    cd ./resumeappAPI
+    npm install
+    ### 3. Bower Install
+    cd ./resumeAppYo
+    bower install
+    ### 4. Run
+    cd ./resumeAppYo
+    grunt serve 
+    cd ./resumeAppAPI
+    nodemon
 # Resources
 https://github.com/yeoman/generator-angular
     Must add &lt;base href="/"&gt; to index.html and $locationProvider.html5Mode(true); to app.js inside .config
