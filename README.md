@@ -1,9 +1,9 @@
 # resumeApp
 ## Installation
 ### 1. Clone Repo
-    git@git.uc.edu:reedws/resumeApp.git
+    git@github.uc.edu:reedws/ResumeApp.git
 ### 2. NPM Install
-    cd ./resumeAppYo 
+    cd ./resumeAppYo
     npm install
     cd ./resumeappAPI
     npm install
@@ -17,7 +17,7 @@ using the file
     resumeappdb.sqlc
 ### 5. Run
     cd ./resumeAppYo
-    grunt serve 
+    grunt serve
     cd ./resumeAppAPI
     nodemon
 # Resources
