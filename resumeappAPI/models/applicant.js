@@ -3,7 +3,7 @@
 var bookshelf = require('../bookshelf');
 
 var Applicant = bookshelf.Model.extend({
-    tableName: 'applicants',
+  tableName: 'applicants',
 });
 
 module.exports = Applicant;

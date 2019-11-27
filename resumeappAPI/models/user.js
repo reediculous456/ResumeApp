@@ -3,7 +3,7 @@
 var bookshelf = require('../bookshelf');
 
 var User = bookshelf.Model.extend({
-    tableName: 'users',
+  tableName: 'users',
 });
 
 module.exports = User;

@@ -11,10 +11,8 @@
     cd ./resumeAppYo
     bower install
 ### 4. Install Postgres SQL
-Install Postgres sql and restore database
-    resumeappdb
-using the file
-    resumeappdb.sqlc
+Start a PostgresSQL Docker container and restore database
+    `cat database.sql | docker exec -i postgres psql -U (username) -d "ResumeApp"`
 ### 5. Run
     cd ./resumeAppYo
     grunt serve

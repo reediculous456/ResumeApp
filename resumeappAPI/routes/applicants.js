@@ -35,7 +35,7 @@ router.route('/')
   })
   .post(upload.single('resumeFile'), function (req, res) {
     /*body('inputFName', 'Empty First Name').trim().isLength({ min: 1 }),
-    body('inputLName', 'Empty Last Name').trim().isLength({ min: 1 }), 
+    body('inputLName', 'Empty Last Name').trim().isLength({ min: 1 }),
     body('inputEmail', 'Invalid email').isLength({ min: 1 }),
     sanitizeBody('inputFName').trim().escape(),
     sanitizeBody('inputLName').trim().escape(),
