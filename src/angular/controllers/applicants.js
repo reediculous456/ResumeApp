@@ -7,22 +7,22 @@
  * # ApplicantCtrl
  * Controller of the resumeappApp
  */
-angular.module('resumeappApp')
-  .controller('ApplicantCtrl', function ($scope, $routeParams, $location, ApplicantsService, SessionService) {
+angular.module(`resumeappApp`)
+  .controller(`ApplicantCtrl`, function ($scope, $routeParams, $location, ApplicantsService, SessionService) {
 
-    $scope.name = 'ApplicantCtrl';
+    $scope.name = `ApplicantCtrl`;
     $scope.params = $routeParams;
 
     $scope.gridOptions = {
       columnDefs: [
-        { name: 'email', cellTemplate: '<a ng-href="mailto:{{row.entity.email}}">{{row.entity.email}}</a>' },
-        { name: 'First Name', field: 'fName' },
-        { name: 'Last Name', field: 'lName' },
-        { name: 'position' },
-        { name: 'File', field: 'resumeFile', cellTooltip: '{{row.entity.resumeFile}}', cellTemplate: '<a ng-href="http://localhost:3000/applicants/download/{{row.entity.id}}">{{row.entity.resumeFile}}</a>' },
-        { name: 'id', visible: false }
+        { name: `email`, cellTemplate: `<a ng-href="mailto:{{row.entity.email}}">{{row.entity.email}}</a>` },
+        { name: `First Name`, field: `fName` },
+        { name: `Last Name`, field: `lName` },
+        { name: `position` },
+        { name: `File`, field: `resumeFile`, cellTooltip: `{{row.entity.resumeFile}}`, cellTemplate: `<a ng-href="http://localhost:3000/applicants/download/{{row.entity.id}}">{{row.entity.resumeFile}}</a>` },
+        { name: `id`, visible: false }
       ],
-      paginationPageSizes: [10, 25],
+      paginationPageSizes: [ 10, 25 ],
       paginationPageSize: 25,
       enablePagination: true,
       enablePaginationControls: true,
@@ -37,43 +37,43 @@ angular.module('resumeappApp')
         gridApi.selection.on.rowSelectionChanged($scope, function (row) {
           $scope.selectedApplicantId = row.entity.id;
           $scope.selectedApplicant = row.entity;
-        })
+        });
       }
     };
 
     $scope.rejectApplicant = async function () {
-      var result = await ApplicantsService.rejectApplicant($scope.selectedApplicantId);
+      const result = await ApplicantsService.rejectApplicant($scope.selectedApplicantId);
 
       if (result) {
         alert(`Rejected applicant #${$scope.selectedApplicantId}`);
-        var index = $scope.gridOptions.data.indexOf($scope.selectedApplicant);
+        const index = $scope.gridOptions.data.indexOf($scope.selectedApplicant);
         $scope.gridOptions.data.splice(index, 1);
       }
       else {
-        alert('An error ocurred, please try again');
+        alert(`An error ocurred, please try again`);
       }
-    }
+    };
 
     $scope.logout = function () {
       SessionService.setUserAuthenticated(false);
-      $location.path('/');
-    }
+      $location.path(`/`);
+    };
 
-    var init = async function () {
-      var applicants = await ApplicantsService.getApplicants();
+    const init = async function () {
+      const applicants = await ApplicantsService.getApplicants();
       if (applicants) {
         $scope.gridOptions.data = applicants;
       }
       else {
-        alert('Failed to load applicants, please check connection to server');
+        alert(`Failed to load applicants, please check connection to server`);
       }
-    }
+    };
 
     init();
 
     this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+      `HTML5 Boilerplate`,
+      `AngularJS`,
+      `Karma`
     ];
-  }); 
+  });

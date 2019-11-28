@@ -16,7 +16,7 @@
     "gulp": "./node_modules/.bin/gulp",
     "dev": "NODE_ENV=dev ./node_modules/.bin/nodemon --watch src/database --watch src/services --watch src/routes --watch ./constants.js src/index.js",
     "gulp-dev": "./node_modules/.bin/gulp && gulp watch",
-    "lint": "./node_modules/.bin/eslint src --ext .vue --ext .js",
+    "lint": "./node_modules/.bin/eslint src --ext .js",
     "stylelint": "./node_modules/.bin/stylelint src/**/*.scss"
   },
   "dependencies": {

@@ -7,31 +7,31 @@
  * # UploadCtrl
  * Controller of the resumeappApp
  */
-angular.module('resumeappApp')
-  .controller('UploadCtrl', function ($scope, $routeParams, PositionsService) {
+angular.module(`resumeappApp`)
+  .controller(`UploadCtrl`, function ($scope, $routeParams, PositionsService) {
 
-    var loadDropdownOptions = async function () {
-      var dropdown = document.getElementById("positionSelect");
-      var positions = await PositionsService.getPositions();
+    const loadDropdownOptions = async function () {
+      const dropdown = document.getElementById(`positionSelect`);
+      const positions = await PositionsService.getPositions();
       if (positions) {
         if (dropdown) {
-          for (var i = 0; i < positions.length; i++) {
+          for (let i = 0; i < positions.length; i += 1) {
             dropdown[dropdown.length] = new Option(positions[i], positions[i]);
           }
         }
       }
       else {
-        alert('Failed to load availible positions. Please close your browser and try again');
+        alert(`Failed to load availible positions. Please close your browser and try again`);
       }
     };
 
-    $scope.name = 'UploadCtrl';
+    $scope.name = `UploadCtrl`;
     $scope.params = $routeParams;
     loadDropdownOptions();
 
     this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+      `HTML5 Boilerplate`,
+      `AngularJS`,
+      `Karma`
     ];
-  }); 
+  });

@@ -1,6 +1,6 @@
-angular.module('resumeappApp')
-  .service('SessionService', function () {
-    var userIsAuthenticated = false;
+angular.module(`resumeappApp`)
+  .service(`SessionService`, function () {
+    let userIsAuthenticated = false;
 
     this.setUserAuthenticated = function (value) {
       userIsAuthenticated = value;

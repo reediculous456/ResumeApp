@@ -1,12 +1,12 @@
-angular.module('resumeappApp')
-  .service('ApplicantsService', function ($http) {
+angular.module(`resumeappApp`)
+  .service(`ApplicantsService`, function ($http) {
     this.getApplicants = async function () {
-      var data = [];
+      let data = [];
       await $http({
-        method: 'GET',
-        url: 'http://localhost:3000/applicants'
+        method: `GET`,
+        url: `http://localhost:3000/applicants`
       }).then(function successCallback(response) {
-        for (var i = 0; i < response.data.length; i++) {
+        for (let i = 0; i < response.data.length; i += 1) {
           if (!response.data[i].rejected) {
             data.push(response.data[i]);
           }
@@ -15,18 +15,18 @@ angular.module('resumeappApp')
         data = undefined;
       });
       return data;
-    }
+    };
 
     this.rejectApplicant = async function (Id) {
-      var success;
+      let success;
       await $http({
-        method: 'DELETE',
+        method: `DELETE`,
         url: `http://localhost:3000/applicants/${Id}`,
-      }).then(function successCallback(response) {
+      }).then(function successCallback() {
         success = true;
-      }, function errorCallback(response) {
+      }, function errorCallback() {
         success = false;
       });
       return success;
-    }
+    };
   });

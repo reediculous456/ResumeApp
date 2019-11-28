@@ -34,7 +34,8 @@
     "vue/require-default-prop": 0
   },
   "globals": {
-
+    "angular": true,
+    "jQuery": true
   },
   "env": {
     "node": true,

@@ -7,16 +7,16 @@
  * # MainCtrl
  * Controller of the resumeappApp
  */
-angular.module('resumeappApp')
-  .controller('ThankYouCtrl', function ($scope, $routeParams) {
+angular.module(`resumeappApp`)
+  .controller(`ThankYouCtrl`, function ($scope, $routeParams) {
 
     $scope.title = `ResumeApp`;
-    $scope.name = 'ThankYou';
+    $scope.name = `ThankYou`;
     $scope.params = $routeParams;
 
     this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+      `HTML5 Boilerplate`,
+      `AngularJS`,
+      `Karma`
     ];
   });
