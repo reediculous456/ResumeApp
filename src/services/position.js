@@ -1,11 +1,10 @@
-const Position = require(`../models/position`);
+const { Position, jsonify } = require(`../database`);
 
 const PositionService = {
-  getAllPositions: function (success, error) {
+  getList: function () {
     Position
       .fetchAll()
-      .then(success)
-      .catch(error);
+      .then(jsonify);
   }
 };
 

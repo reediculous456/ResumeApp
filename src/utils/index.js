@@ -3,6 +3,7 @@ const ResponseHandler = require(`./ResponseHandler`);
 const RouteLoader = require(`./RouteLoader`);
 const SessionManager = require(`./SessionManager`);
 const IndexRoute = require(`./IndexRoute`);
+const Upload = require(`./Upload`);
 
 module.exports = {
   ErrorHandler,
@@ -10,4 +11,5 @@ module.exports = {
   ResponseHandler,
   RouteLoader,
   SessionManager,
+  Upload,
 };

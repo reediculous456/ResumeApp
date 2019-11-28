@@ -1,5 +1,5 @@
 const SessionManager = require(`../SessionManager`);
-const { TokenService } = require(`../../services`);
+const TokenService = require(`../../services/token`);
 const config = require(`config`);
 
 module.exports = async (req, res, next) => {

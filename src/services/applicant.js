@@ -1,41 +1,32 @@
-const { Applicant } = require(`../databas`);
+const { Applicant, jsonify } = require(`../database`);
 
 const ApplicantService = {
-  getAllApplicants: function (success, error) {
-    Applicant
+  getList: () => {
+    return Applicant
+      .where({ rejected: false })
       .fetchAll()
-      .then(success)
-      .catch(error);
+      .then(jsonify);
   },
 
-  getApplicantById: function (id, success, error) {
-    new Applicant({ id: id })
+  getById: (id) => {
+    return Applicant
+      .where({ id })
       .fetch()
-      .then(success)
-      .catch(error);
+      .then(jsonify);
   },
 
-  addApplicant: function (email, fName, lName, file, position, success, error) {
-    new Applicant({
-      email: email,
-      fName: fName,
-      lName: lName,
-      resumeFile: file,
-      position: position
-    })
-      .save(null, { method: `insert` })
-      .then(success)
-      .catch(error);
+  add: (applicant) => {
+    return Applicant
+      .forge()
+      .save(applicant)
+      .then(jsonify);
   },
 
-  rejectApplicant: function (id, success, error) {
-    new Applicant({
-      id: id,
-      rejected: true
-    })
-      .save(null, { method: `update` })
-      .then(success)
-      .catch(error);
+  reject: (id) => {
+    return Applicant
+      .where({ id })
+      .save({ rejected: true }, { patch: true })
+      .then(jsonify);
   }
 };
 

@@ -4,7 +4,6 @@ const app = express();
 const server = require(`http`).Server(app);
 const { IndexRoute, RouteLoader, SessionManager } = require(`./utils`);
 const moment = require(`moment`);
-const favicon = require(`serve-favicon`);
 const cookieParser = require(`cookie-parser`);
 const session = require(`express-session`);
 const RedisStore = require(`connect-redis`)(session);
@@ -26,7 +25,6 @@ const sesh = session({
 
 app.use(sesh);
 app.use(compression());
-app.use(favicon(`${__dirname}/../public/images/icons/uc_logo.png`));
 app.set(`view engine`, `ejs`);
 app.set(`views`, `${__dirname}/../views`);
 

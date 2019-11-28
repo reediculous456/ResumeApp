@@ -22,5 +22,6 @@
   "token": {
     "signingKey": "",
     "expiration": "10h"
-  }
+  },
+  "uploadPath": "uploads"
 }
