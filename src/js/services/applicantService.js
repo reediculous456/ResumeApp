@@ -2,7 +2,7 @@ resumeApp.service(`ApplicantsService`, [
   `$http`,
   function ($http) {
     this.getApplicants = async function () {
-      const data = [];
+      let data = [];
       await $http({
         method: `GET`,
         url: `http://localhost:3000/applicants`
