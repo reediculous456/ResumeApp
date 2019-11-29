@@ -5,7 +5,7 @@
 ### 2. Install dependencies
     npm install
 ### 3. Start Docker Containers
-  * `docker run --name postgres -e PGDATA=/var/lib/postgresql/data/pgdata -e POSTGRES_PASSWORD=(...) -e POSTGRES_USER=(...) -v (folder on computer):/var/lib/postgresql/data -p 5432:5432 --restart=always -d postgres`
+  * `docker run --name postgres -e PGDATA=/var/lib/postgresql/data/pgdata -e POSTGRES_PASSWORD=(password) -e POSTGRES_USER=(username) -v (folder on computer):/var/lib/postgresql/data -p 5432:5432 --restart=always -d postgres`
   * `docker run --name="redis" -d -p 0.0.0.0:6379:6379 redis`
 ### 4. Load Database
     `cat database.sql | docker exec -i postgres psql -U (username) -d "ResumeApp"`
