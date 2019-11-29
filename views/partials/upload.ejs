@@ -6,17 +6,28 @@
       <p style="color: white; font-size: 4rem;">Upload your resume here!</p>
 
       <form action="http://localhost:3000/applicants" method="post" enctype="multipart/form-data" target="_self">
-        <input type="firstname" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="inputFName"
-          placeholder="Enter first name" width="20%" required><br />
-        <input type="lastname" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="inputLName"
-          placeholder="Enter last name" width="20%" required><br />
-        <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="inputEmail"
-          placeholder="Enter email address" width="20%" required><br />
-        <select name="positionSelect" id="positionSelect" required><br />
-          <option selected disabled value="">Choose a Position</option>
-        </select>
-        <input type="file" accept=".rtf" name="resumeFile" style="color:white" required>
-        <br /><br />
+
+        <div class="form-group">
+          <input type="firstname" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="inputFName"
+            placeholder="Enter first name" width="20%" required><br />
+          <input type="lastname" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="inputLName"
+            placeholder="Enter last name" width="20%" required><br />
+          <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="inputEmail"
+            placeholder="Enter email address" width="20%" required><br />
+          <select name="positionSelect" id="positionSelect" class="form-control" required><br />
+            <option selected disabled value="">Choose a Position</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <div class="custom-file">
+            <input ref="file" class="custom-file-input" type="file" accept=".rtf" name="resumeFile" required>
+            <label class="custom-file-label">
+              Upload a Resume File
+            </label>
+          </div>
+        </div>
+
         <input type="submit" value="Submit" class="btn btn-primary mx-auto">
       </form>
 

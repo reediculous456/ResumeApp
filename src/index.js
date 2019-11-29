@@ -2,8 +2,7 @@ const config = require(`config`);
 const express = require(`express`);
 const app = express();
 const server = require(`http`).Server(app);
-const { IndexRoute, RouteLoader, SessionManager } = require(`./utils`);
-const moment = require(`moment`);
+const { IndexRoute, RouteLoader } = require(`./utils`);
 const cookieParser = require(`cookie-parser`);
 const session = require(`express-session`);
 const RedisStore = require(`connect-redis`)(session);
@@ -35,30 +34,6 @@ app.use(bodyParser.urlencoded({
 app.use(boolParser());
 app.use(cookieParser());
 app.use(express.static(`${__dirname}/../public`));
-
-app.use((req, res, next) => {
-  SessionManager
-    .getUserSession(req)
-    .then(user => {
-      res.locals.moment = moment;
-      res.locals.config = config;
-      res.locals.formatBytes = (bytes, decimals = 2) => {
-        if (bytes === 0) {
-          return `0 Byte`;
-        }
-        const k = 1000;
-        const dm = decimals + 1 || 3;
-        const sizes = [ `Bytes`, `KB`, `MB`, `GB`, `TB`, `PB`, `EB`, `ZB`, `YB` ];
-        const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return `${(bytes / Math.pow(k, i)).toPrecision(dm) } ${ sizes[i]}`;
-      };
-      res.locals.user = user;
-      next();
-    })
-    .catch(() => {
-      next();
-    });
-});
 
 RouteLoader(app)
   .then(() => {

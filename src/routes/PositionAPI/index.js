@@ -17,4 +17,4 @@ router.get(`/`, async (req, res) => {
 });
 
 exports.router = router;
-exports.path = `/api/postitions`;
+exports.path = `/api/positions`;

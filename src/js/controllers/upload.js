@@ -8,7 +8,7 @@ resumeApp.controller(`UploadCtrl`, [
       if (positions) {
         if (dropdown) {
           for (let i = 0; i < positions.length; i += 1) {
-            dropdown[dropdown.length] = new Option(positions[i], positions[i]);
+            dropdown[dropdown.length] = new Option(positions[i].name, positions[i].id);
           }
         }
       }

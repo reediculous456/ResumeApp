@@ -2,7 +2,8 @@ const { Position, jsonify } = require(`../database`);
 
 const PositionService = {
   getList: function () {
-    Position
+    return Position
+      .where({ available: true })
       .fetchAll()
       .then(jsonify);
   }
