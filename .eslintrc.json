@@ -35,7 +35,8 @@
   },
   "globals": {
     "angular": true,
-    "jQuery": true
+    "jQuery": true,
+    "resumeApp": true
   },
   "env": {
     "node": true,
