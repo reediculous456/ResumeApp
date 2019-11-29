@@ -1,13 +1,11 @@
 resumeApp.controller(`ApplicantCtrl`, [
   `$scope`,
-  `$routeParams`,
   `$location`,
   `ApplicantsService`,
   `SessionService`,
-  function ($scope, $routeParams, $location, ApplicantsService, SessionService) {
+  function ($scope, $location, ApplicantsService, SessionService) {
 
     $scope.name = `ApplicantCtrl`;
-    $scope.params = $routeParams;
 
     $scope.gridOptions = {
       columnDefs: [

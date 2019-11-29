@@ -12,6 +12,9 @@ const paths = {
     `./src/js/services/**/*.js`,
     `./src/js/controllers/**/*.js`,
   ],
+  alljs: [
+    `./src/js/**/*.js`
+  ],
   css: `./src/resources/scss/**/*.scss`,
   ejs: `./views/**/*.ejs`,
   images: `./src/resources/images/*`,
@@ -28,8 +31,8 @@ const paths = {
   ],
   frontEndLibs: [
     `./node_modules/jquery/dist/jquery.min.js`,
-    `./node_modules/angular/angular.min.js`,
     `./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js`,
+    `./node_modules/angular/angular.min.js`,
     `./node_modules/angular-animate/angular-animate.min.js`,
     `./node_modules/angular-cookies/angular-cookies.min.js`,
     `./node_modules/angular-resource/angular-resource.min.js`,
@@ -115,7 +118,7 @@ gulp.task(`fonts`, function() {
 
 // Rerun the task when a file changes
 gulp.task(`watch`, () => {
-  gulp.watch(paths.scripts, gulp.series(`js`));
+  gulp.watch(paths.alljs, gulp.series(`js`));
   gulp.watch(paths.ejs, gulp.series(`ejs`));
   gulp.watch(paths.css, gulp.series(`css`));
 });

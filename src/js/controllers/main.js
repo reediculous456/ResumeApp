@@ -1,9 +1,7 @@
 resumeApp.controller(`MainCtrl`, [
   `$scope`,
-  `$routeParams`,
-  function ($scope, $routeParams) {
-    $scope.title = `ResumeApp`;
+  function ($scope) {
+    $scope.title = `Resume App`;
     $scope.name = `Main`;
-    $scope.params = $routeParams;
   }
 ]);

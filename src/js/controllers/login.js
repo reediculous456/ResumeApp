@@ -1,12 +1,10 @@
 resumeApp.controller(`LoginCtrl`, [
   `$scope`,
-  `$location`,
-  `$routeParams`,
+  `$state`,
   `LoginService`,
   `SessionService`,
-  function ($scope, $location, $routeParams, LoginService, SessionService) {
+  function ($scope, $state, LoginService, SessionService) {
     $scope.name = `LoginCtrl`;
-    $scope.params = $routeParams;
 
     $scope.login = async function () {
       const form = document.getElementById(`loginForm`);
@@ -16,7 +14,7 @@ resumeApp.controller(`LoginCtrl`, [
 
       if (result) {
         SessionService.setUserAuthenticated(true);
-        $location.path(`/applicants`);
+        $state.go(`base.applicants`);
       }
       else {
         alert(`Incorrect Username or Password`);

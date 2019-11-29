@@ -5,7 +5,7 @@ resumeApp.service(`SessionService`, function () {
     userIsAuthenticated = value;
   };
 
-  this.getUserAuthenticated = function () {
+  this.isValidSession = function () {
     return userIsAuthenticated;
   };
 });

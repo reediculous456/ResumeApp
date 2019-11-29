@@ -1,8 +1,7 @@
 resumeApp.controller(`UploadCtrl`, [
   `$scope`,
-  `$routeParams`,
   `PositionsService`,
-  function ($scope, $routeParams, PositionsService) {
+  function ($scope, PositionsService) {
     const loadDropdownOptions = async function () {
       const dropdown = document.getElementById(`positionSelect`);
       const positions = await PositionsService.getPositions();
@@ -19,7 +18,6 @@ resumeApp.controller(`UploadCtrl`, [
     };
 
     $scope.name = `UploadCtrl`;
-    $scope.params = $routeParams;
     loadDropdownOptions();
   }
 ]);

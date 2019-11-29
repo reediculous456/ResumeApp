@@ -3,7 +3,7 @@ const resumeApp = angular
     `ngAnimate`,
     `ngCookies`,
     `ngResource`,
-    `ngRoute`,
+    `ui.router`,
     `ngSanitize`,
     `ngTouch`,
     `ui.grid`,
@@ -14,62 +14,54 @@ resumeApp.config([
   `$stateProvider`,
   `$urlRouterProvider`,
   `$locationProvider`,
-  `$rootScope`,
-  `#state`,
-  function ($stateProvider, $urlRouterProvider, $locationProvider, $rootScope, $state) {
+  function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
-      .state(`home`, {
+      .state(`base`, {
         url: ``,
-        templateUrl: `partial/base.html`,
+        templateUrl: `partial/base`,
         controller: `BaseCtrl`,
         abstract: true
       })
-      .state(`home`, {
-        url: ``,
-        templateUrl: `partial/main.html`,
+      .state(`base.home`, {
+        url: `/home`,
+        templateUrl: `partial/main`,
         controller: `MainCtrl`
       })
-      .state(`login`, {
+      .state(`base.login`, {
         url: `/login`,
-        templateUrl: `partial/login.html`,
+        templateUrl: `partial/login`,
         controller: `LoginCtrl`
       })
-      .state(`upload`, {
+      .state(`base.upload`, {
         url: `/upload`,
-        templateUrl: `partial/upload.html`,
+        templateUrl: `partial/upload`,
         controller: `UploadCtrl`
       })
-      .state(`applicants`, {
+      .state(`base.applicants`, {
         url: `/applicants`,
-        templateUrl: `partial/applicants.html`,
-        controller: `ApplicantCtrl`,
-        resolve: {
-          security: [
-            `$q`,
-            `SessionService`,
-            function ($q, SessionService) {
-              if (SessionService.isValidSession()) {
-                return $q.reject(`Not Authorized`);
-              }
-            }
-          ]
-        }
+        templateUrl: `partial/applicants`,
+        controller: `ApplicantCtrl`
       })
-      .state(`thankyou`, {
+      .state(`base.thankyou`, {
         url: `/thankyou`,
-        templateUrl: `partial/thankyou.html`,
+        templateUrl: `partial/thankyou`,
         controller: `ThankYouCtrl`
       });
 
-    $urlRouterProvider.otherwise(`/`);
+    $urlRouterProvider.otherwise(`/home`);
     $locationProvider.html5Mode({
       enabled: true
     });
-
-    $rootScope.$on(`$stateChangeError`, function(e, toState, toParams, fromState, fromParams, error) {
-      if (error === `Not Authorized`) {
-        $state.go(`login`);
-      }
-    });
   }
-]);
+])
+  .run([
+    `$transitions`,
+    `SessionService`,
+    function($transitions, SessionService) {
+      $transitions.onStart({ to: `base.applicants` }, function(trans) {
+        if (!SessionService.isValidSession()) {
+          return trans.router.stateService.target(`base.login`);
+        }
+      });
+    }
+  ]);

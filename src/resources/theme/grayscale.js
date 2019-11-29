@@ -35,7 +35,9 @@
     }
   };
   // Collapse now if page is not at top
-  navbarCollapse();
+  setTimeout(() => {
+    navbarCollapse();
+  }, 1000);
   // Collapse the navbar when page is scrolled
   $(window).scroll(navbarCollapse);
 

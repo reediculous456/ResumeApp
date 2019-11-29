@@ -1,11 +1,18 @@
-resumeApp.controller(`BaseCtl`, [
+resumeApp.controller(`BaseCtrl`, [
   `$scope`,
-  `$route`,
-  `$routeParams`,
   `$location`,
-  function ($scope, $route, $routeParams, $location) {
-    $scope.$route = $route;
+  `$state`,
+  `SessionService`,
+  function ($scope, $location, $state, SessionService) {
     $scope.$location = $location;
-    $scope.$routeParams = $routeParams;
+
+    $scope.secureAccess = () => {
+      if (SessionService.isValidSession()) {
+        $state.go(`base.applicants`);
+      }
+      else {
+        $state.go(`base.login`);
+      }
+    };
   }
 ]);
