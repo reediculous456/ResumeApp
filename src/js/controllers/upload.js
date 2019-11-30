@@ -1,23 +1,31 @@
 resumeApp.controller(`UploadCtrl`, [
   `$scope`,
   `PositionsService`,
-  function ($scope, PositionsService) {
-    const loadDropdownOptions = async function () {
-      const dropdown = document.getElementById(`positionSelect`);
-      const positions = await PositionsService.getPositions();
-      if (positions) {
-        if (dropdown) {
-          for (let i = 0; i < positions.length; i += 1) {
-            dropdown[dropdown.length] = new Option(positions[i].name, positions[i].id);
-          }
-        }
+  `ApplicantsService`,
+  `$state`,
+  function ($scope, PositionsService, ApplicantsService, $state) {
+    $scope.applicant = {
+      fName: null,
+      lName: null,
+      email: null,
+      position_id: null
+    };
+
+    PositionsService.getPositions()
+      .then(positions => {
+        $scope.positions = positions;
+      });
+
+    $scope.submit = async function() {
+      try {
+        await ApplicantsService.addApplicant($scope.applicant, $scope.resumeFile);
+        $state.go(`base.thankyou`);
       }
-      else {
-        alert(`Failed to load availible positions. Please close your browser and try again`);
+      catch (error) {
+        alert(`An error occurred!`);
       }
     };
 
     $scope.name = `UploadCtrl`;
-    loadDropdownOptions();
   }
 ]);

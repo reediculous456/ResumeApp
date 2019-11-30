@@ -16,15 +16,15 @@ router.get(`/`, async (req, res) => {
   }
 });
 
-router.post(`/`, Upload.single(`resumeFile`), async (req, res) => {
+router.post(`/`, Upload.single(`file`), async (req, res) => {
   try {
-    const { inputEmail: email, inputFName: fName, inputLName: lName, positionSelect: position } = req.body;
+    const { email, fName, lName, position_id } = req.body;
     const newApplicant = {
       email,
       fName,
       lName,
       resumeFile: req.file.filename,
-      position
+      position_id
     };
     const applicant = await ApplicantService.add(newApplicant);
 

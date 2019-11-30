@@ -11,6 +11,7 @@ const paths = {
   scripts: [
     `./src/js/services/**/*.js`,
     `./src/js/controllers/**/*.js`,
+    `./src/js/directives/**/*.js`,
   ],
   alljs: [
     `./src/js/**/*.js`
