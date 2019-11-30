@@ -33,16 +33,16 @@ resumeApp.service(`ApplicantsService`, [
     };
 
     this.rejectApplicant = async function (id) {
-      let success;
-      await $http({
+      return await $http({
         method: `DELETE`,
         url: `/api/applicants/${id}`,
-      }).then(function successCallback() {
-        success = true;
-      }, function errorCallback() {
-        success = false;
-      });
-      return success;
+      })
+        .then(() => {
+          return true;
+        })
+        .catch(() => {
+          return false;
+        });
     };
   }
 ]);
