@@ -1,31 +1,30 @@
 # resumeApp
 ## Installation
 ### 1. Clone Repo
-    git@github.uc.edu:reedws/ResumeApp.git
-### 2. NPM Install
-    cd ./resumeAppYo
+    git@github.com:reediculous456/ResumeApp.git
+### 2. Install dependencies
     npm install
-    cd ./resumeappAPI
-    npm install
-### 3. Bower Install
-    cd ./resumeAppYo
-    bower install
-### 4. Install Postgres SQL
-Start a PostgresSQL Docker container and restore database
+### 3. Start Docker Containers
+  * `docker run --name postgres -e PGDATA=/var/lib/postgresql/data/pgdata -e POSTGRES_PASSWORD=(password) -e POSTGRES_USER=(username) -v (folder on computer):/var/lib/postgresql/data -p 5432:5432 --restart=always -d postgres`
+  * `docker run --name="redis" -d -p 0.0.0.0:6379:6379 redis`
+### 4. Load Database
     `cat database.sql | docker exec -i postgres psql -U (username) -d "ResumeApp"`
-### 5. Run
-    cd ./resumeAppYo
-    grunt serve
-    cd ./resumeAppAPI
-    nodemon
+### 5. Build
+  #### Development mode
+    npm run gulp-dev
+  #### Production mode
+    npm run gulp
+### 6. Run
+  #### Development mode
+    npm run dev
+  #### Production mode
+    npm run start
 # Resources
-https://github.com/yeoman/generator-angular
-    Must add &lt;base href="/"&gt; to index.html and $locationProvider.html5Mode(true); to app.js inside .config
 
-https://travishorn.com/what-did-i-learn-this-week-knex-js-bookshelf-js-95d3490e3a6f
+[BookshelfJS](https://travishorn.com/what-did-i-learn-this-week-knex-js-bookshelf-js-95d3490e3a6f)
 
-http://expressjs.com/en/starter/generator.html
+[ExpressJS Generator](http://expressjs.com/en/starter/generator.html)
 
-http://expressjs.com/en/4x/api.html
+[ExpressJS](http://expressjs.com/en/4x/api.html)
 
-https://medium.com/@holtkam2/add-user-authentication-to-your-node-expressjs-application-using-bcrypt-81bb0f618ab3
+[User Authentication through bCrypt](https://medium.com/@holtkam2/add-user-authentication-to-your-node-expressjs-application-using-bcrypt-81bb0f618ab3)
