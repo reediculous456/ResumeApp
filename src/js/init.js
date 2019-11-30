@@ -59,9 +59,11 @@ resumeApp.config([
     `SessionService`,
     function($transitions, SessionService) {
       $transitions.onStart({ to: `base.applicants` }, function(trans) {
-        if (!SessionService.isValidSession()) {
-          return trans.router.stateService.target(`base.login`);
-        }
+        return SessionService.isValidSession()
+          .catch(() => {
+            localStorage.removeItem(`token`);
+            return trans.router.stateService.target(`base.login`);
+          });
       });
     }
   ]);

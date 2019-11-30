@@ -2,21 +2,17 @@ resumeApp.service(`LoginService`, [
   `$http`,
   function ($http) {
     this.login = async function (username, password) {
-      let retVal;
-      await $http({
+      return await $http({
         method: `POST`,
-        url: `http://localhost:3000/login`,
-        data: { uName: username, pWord: password },
+        url: `/api/login`,
+        data: { username, password },
         headers: {
-          'Content-Type': `application/json; charset=utf-8`
+          'Content-Type': `application/json`
         }
       })
-        .then(function successCallback() {
-          retVal = true;
-        }, function errorCallback() {
-          retVal = false;
+        .then(response => {
+          return response.data.data.token;
         });
-      return retVal;
     };
   }
 ]);

@@ -5,14 +5,23 @@ resumeApp.controller(`BaseCtrl`, [
   `SessionService`,
   function ($scope, $location, $state, SessionService) {
     $scope.$location = $location;
+    SessionService.isValidSession()
+      .then(() => {
+        $scope.auth = true;
+      })
+      .catch(() => {
+        $scope.auth = false;
+      });
 
     $scope.secureAccess = () => {
-      if (SessionService.isValidSession()) {
-        $state.go(`base.applicants`);
-      }
-      else {
-        $state.go(`base.login`);
-      }
+      SessionService.isValidSession()
+        .then(() => {
+          $state.go(`base.applicants`);
+        })
+        .catch(() => {
+          localStorage.removeItem(`token`);
+          $state.go(`base.login`);
+        });
     };
   }
 ]);

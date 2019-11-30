@@ -15,14 +15,15 @@
           <input type="email" class="form-control" ng-model="applicant.email" placeholder="Enter email address"
             required><br />
           <select ng-model="applicant.position_id" class="form-control" required>
-              <option selected disabled value="">Choose a Position</option>
+            <option selected disabled value="">Choose a Position</option>
             <option ng-repeat="position in positions" value="{{position.id}}">{{position.name}}</option>
           </select>
         </div>
 
         <div class="form-group">
           <div class="custom-file">
-            <input ref="file" class="custom-file-input" type="file" accept=".rtf,.txt,.pdf,.docx,.doc" file-model="resumeFile" required>
+            <input ref="file" class="custom-file-input" type="file" accept=".rtf,.txt,.pdf,.docx,.doc"
+              file-model="resumeFile" required>
             <label class="custom-file-label">
               {{ resumeFile ?  resumeFile.name : "Upload a Resume File" }}
             </label>

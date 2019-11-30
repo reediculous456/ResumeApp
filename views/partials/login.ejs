@@ -5,13 +5,15 @@
 
       <h1 class="text-white my-0 text-uppercase">Login</h1>
 
-      <form id="loginForm" ng-submit="login()">
-        <input type="username" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="uName"
-          placeholder="Enter username" width="50%" required><br />
-        <input type="password" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="pWord"
-          placeholder="Enter password" width="50%" required><br />
-        <input type="submit" value="Login" class="btn btn-primary mx-auto">
-      </form>
+      <div class="form-group">
+        <input ng-model="username" type="username" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0"
+          placeholder="Enter username" required><br />
+        <input ng-model="password" type="password" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0"
+          placeholder="Enter password" required><br />
+        <button ng-click="login()" class="btn btn-primary mx-auto">
+          Login
+        </button>
+      </div>
 
     </div>
   </div>

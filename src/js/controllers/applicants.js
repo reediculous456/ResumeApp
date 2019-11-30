@@ -3,7 +3,8 @@ resumeApp.controller(`ApplicantCtrl`, [
   `$location`,
   `ApplicantsService`,
   `SessionService`,
-  function ($scope, $location, ApplicantsService, SessionService) {
+  `$state`,
+  function ($scope, $location, ApplicantsService, SessionService, $state) {
 
     $scope.name = `ApplicantCtrl`;
 
@@ -48,9 +49,9 @@ resumeApp.controller(`ApplicantCtrl`, [
       }
     };
 
-    $scope.logout = function () {
-      SessionService.setUserAuthenticated(false);
-      $location.path(`/`);
+    $scope.logout = async function () {
+      await SessionService.destroy();
+      $state.go(`base.home`);
     };
 
     const init = async function () {

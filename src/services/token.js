@@ -10,7 +10,7 @@ const TokenService = {
     return new Promise(resolve => {
       const signKey = config.get(`token.signingKey`);
       const decodedToken = jwt.verify(token, signKey);
-      resolve(decodedToken.user);
+      resolve(decodedToken);
     });
   },
 };

@@ -1,11 +1,29 @@
-resumeApp.service(`SessionService`, function () {
-  let userIsAuthenticated = false;
+resumeApp.service(`SessionService`, [
+  `$http`,
+  function ($http) {
+    this.setToken = function (token) {
+      localStorage.setItem(`token`, token);
+    };
 
-  this.setUserAuthenticated = function (value) {
-    userIsAuthenticated = value;
-  };
+    this.isValidSession = async function () {
+      const token = localStorage.getItem(`token`);
+      if (token) {
+        await $http({
+          method: `PUT`,
+          url: `/api/users/verify`,
+          data: { token }
+        });
+      } else {
+        throw new Error(`No token provided!`);
+      }
+    };
 
-  this.isValidSession = function () {
-    return userIsAuthenticated;
-  };
-});
+    this.destroy = async function () {
+      localStorage.removeItem(`token`);
+      await $http({
+        method: `GET`,
+        url: `/logout`
+      });
+    };
+  }
+]);

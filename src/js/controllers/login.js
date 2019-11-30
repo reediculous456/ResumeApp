@@ -7,16 +7,12 @@ resumeApp.controller(`LoginCtrl`, [
     $scope.name = `LoginCtrl`;
 
     $scope.login = async function () {
-      const form = document.getElementById(`loginForm`);
-      const FD = new FormData(form);
-
-      const result = LoginService.login(FD.get(`uName`), FD.get(`pWord`));
-
-      if (result) {
-        SessionService.setUserAuthenticated(true);
+      try {
+        const token = await LoginService.login($scope.username, $scope.password);
+        SessionService.setToken(token);
         $state.go(`base.applicants`);
       }
-      else {
+      catch {
         alert(`Incorrect Username or Password`);
       }
     };

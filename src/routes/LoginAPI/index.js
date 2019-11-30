@@ -9,7 +9,11 @@ router.post(`/`, async(req, res) =>{
     delete req.body.password;
     await SessionManager.setSession(req, token);
 
-    ResponseHandler(res, `login successful`);
+    ResponseHandler(
+      res,
+      `login successful`,
+      { token }
+    );
   } catch (err) {
     ErrorHandler(res, err);
   }
