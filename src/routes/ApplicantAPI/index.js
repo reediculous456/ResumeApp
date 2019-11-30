@@ -56,7 +56,7 @@ router.get(`/download/:id`, async (req, res) => {
   try {
     const applicant = await ApplicantService.getById(req.params.id);
 
-    res.status(200).download(`${process.env.PWD}/uploads/${applicant.attributes.resumeFile}`);
+    res.status(200).download(`${process.env.PWD}/uploads/${applicant.resumeFile}`);
   } catch (err) {
     ErrorHandler(res, err.message || err);
   }

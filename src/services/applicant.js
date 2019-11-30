@@ -4,7 +4,9 @@ const ApplicantService = {
   getList: () => {
     return Applicant
       .where({ rejected: false })
-      .fetchAll()
+      .fetchAll({
+        withRelated: [ `position` ]
+      })
       .then(jsonify);
   },
 

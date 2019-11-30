@@ -24,20 +24,12 @@ resumeApp.service(`ApplicantsService`, [
     };
 
     this.getApplicants = async function () {
-      let data = [];
-      await $http({
+      return await $http({
         method: `GET`,
         url: `/api/applicants`
-      }).then(function successCallback(response) {
-        for (let i = 0; i < response.data.length; i += 1) {
-          if (!response.data[i].rejected) {
-            data.push(response.data[i]);
-          }
-        }
-      }, function errorCallback() {
-        data = undefined;
+      }).then(response => {
+        return response.data.data.applicants;
       });
-      return data;
     };
 
     this.rejectApplicant = async function (id) {

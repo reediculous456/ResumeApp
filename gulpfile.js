@@ -21,14 +21,18 @@ const paths = {
   images: `./src/resources/images/*`,
   fonts: [
     `./node_modules/@fortawesome/fontawesome-free/webfonts/*`,
-    `./node_modules/bootstrap/fonts/*`
+    `./node_modules/bootstrap/fonts/*`,
+    `./node_modules/angular-ui-grid/fonts/*`,
   ],
   themecss: `./src/resources/theme/grayscale.scss`,
   themejs: `./src/resources/theme/grayscale.js`,
   polyfill: `./node_modules/@babel/polyfill/dist/polyfill.min.js`,
   frontEndStyles: [
     `./node_modules/bootstrap/dist/css/bootstrap.min.css`,
-    `./node_modules/@fortawesome/fontawesome-free/css/all.min.css`
+    `./node_modules/@fortawesome/fontawesome-free/css/all.min.css`,
+    `./node_modules/angular-ui-grid/css/ui-grid.core.min.css`,
+    `./node_modules/angular-ui-grid/css/ui-grid.pagination.min.css`,
+    `./node_modules/angular-ui-grid/css/ui-grid.selection.min.css`,
   ],
   frontEndLibs: [
     `./node_modules/jquery/dist/jquery.min.js`,

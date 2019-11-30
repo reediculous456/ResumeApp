@@ -1,10 +1,18 @@
 <!-- Signup Section -->
-<section class="masthead applicants-grid-container">
-  <div style="text-align: center;">
-    <div ui-grid="gridOptions" ui-grid-selection class="applicants-grid">
+<section class="masthead">
+  <div class="row" style="padding-top: 5rem;">
+    <div class="col">
+      <div ui-grid="gridOptions" ui-grid-selection class="applicants-grid">
+      </div>
     </div>
-    <br />
-    <button class="btn btn-primary mx-auto" style="margin: auto;" ng-click="rejectApplicant()">Reject Applicant</button><br /><br />
-    <button class="btn btn-primary mx-auto" style="margin: auto;" ng-click="logout()">Logout</button>
+  </div>
+  <div class="row" style="padding-top: 2rem;">
+    <div class="col">
+      <div style="text-align: center;">
+        <button class="btn btn-primary mx-auto" style="margin: auto;" ng-click="rejectApplicant()">Reject
+          Applicant</button><br /><br />
+        <button class="btn btn-primary mx-auto" style="margin: auto;" ng-click="logout()">Logout</button>
+      </div>
+    </div>
   </div>
 </section>

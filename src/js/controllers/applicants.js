@@ -1,10 +1,9 @@
 resumeApp.controller(`ApplicantCtrl`, [
   `$scope`,
-  `$location`,
   `ApplicantsService`,
   `SessionService`,
   `$state`,
-  function ($scope, $location, ApplicantsService, SessionService, $state) {
+  function ($scope, ApplicantsService, SessionService, $state) {
 
     $scope.name = `ApplicantCtrl`;
 
@@ -13,8 +12,8 @@ resumeApp.controller(`ApplicantCtrl`, [
         { name: `email`, cellTemplate: `<a ng-href="mailto:{{row.entity.email}}">{{row.entity.email}}</a>` },
         { name: `First Name`, field: `fName` },
         { name: `Last Name`, field: `lName` },
-        { name: `position` },
-        { name: `File`, field: `resumeFile`, cellTooltip: `{{row.entity.resumeFile}}`, cellTemplate: `<a ng-href="http://localhost:3000/applicants/download/{{row.entity.id}}">{{row.entity.resumeFile}}</a>` },
+        { name: `Position`, field: `position.name` },
+        { name: `File`, field: `resumeFile`, cellTooltip: `{{row.entity.resumeFile}}`, cellTemplate: `<a href="/api/applicants/download/{{row.entity.id}}" target="_blank">{{row.entity.resumeFile}}</a>` },
         { name: `id`, visible: false }
       ],
       paginationPageSizes: [ 10, 25 ],
